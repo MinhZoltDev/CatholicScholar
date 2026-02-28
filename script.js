@@ -1,6 +1,7 @@
 const header = document.getElementById("header");
 const menuToggle = document.getElementById("menu-toggle");
 const navLinks = document.getElementById("nav-links");
+const quoteBox = document.getElementById("quote-box");
 
 const quotes = [
   {
@@ -22,8 +23,11 @@ const quoteText = document.getElementById("quote-text");
 const quoteAuthor = document.getElementById("quote-author");
 
 function renderQuote(index) {
+  quoteBox.classList.remove("animating");
+  void quoteBox.offsetWidth;
   quoteText.textContent = `“${quotes[index].text}”`;
   quoteAuthor.textContent = `— ${quotes[index].author}`;
+  quoteBox.classList.add("animating");
 }
 
 function nextQuote(step = 1) {
@@ -49,7 +53,26 @@ document.querySelectorAll(".nav-links a").forEach((link) => {
   });
 });
 
+const revealElements = document.querySelectorAll(".reveal");
+const revealObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.16 }
+);
+
+revealElements.forEach((element) => revealObserver.observe(element));
+
 document.getElementById("next-quote").addEventListener("click", () => nextQuote(1));
 document.getElementById("prev-quote").addEventListener("click", () => nextQuote(-1));
+
+setInterval(() => {
+  nextQuote(1);
+}, 5500);
 
 renderQuote(currentQuote);

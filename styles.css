@@ -1,3 +1,5 @@
+@import url("https://fonts.cdnfonts.com/css/momo-trust-display");
+
 :root {
   --bg: #f8f5ef;
   --ink: #1e2430;
@@ -15,7 +17,7 @@ html {
 
 body {
   margin: 0;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Momo Trust Display", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background: var(--bg);
   color: var(--ink);
   line-height: 1.6;
@@ -73,6 +75,11 @@ body {
   text-decoration: none;
   color: var(--ink);
   font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: var(--accent);
 }
 
 .container {
@@ -125,9 +132,16 @@ blockquote {
   padding: 0.7rem 1.2rem;
   border-radius: 999px;
   font-weight: 600;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.card-grid {
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(141, 90, 43, 0.35);
+}
+
+.card-grid,
+.legacy-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
   gap: 1rem;
@@ -138,6 +152,12 @@ blockquote {
   padding: 1rem;
   border-radius: 10px;
   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 24px rgba(0, 0, 0, 0.13);
 }
 
 .card i {
@@ -185,12 +205,21 @@ blockquote {
   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
 }
 
+.quote-box.animating {
+  animation: quotePulse 0.45s ease;
+}
+
 .slider-btn {
   background: transparent;
   border: none;
   color: var(--accent);
   font-size: 2rem;
   cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.slider-btn:hover {
+  transform: scale(1.08);
 }
 
 .gallery-grid {
@@ -206,6 +235,11 @@ blockquote {
   border-radius: 10px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
   background: #fff;
+  transition: transform 0.3s ease;
+}
+
+.gallery-grid img:hover {
+  transform: scale(1.02);
 }
 
 .contact-grid {
@@ -219,6 +253,28 @@ blockquote {
   padding: 1.2rem;
   background: #ece5d7;
   font-size: 0.95rem;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes quotePulse {
+  0% {
+    transform: scale(0.98);
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 @media (max-width: 820px) {
