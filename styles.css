@@ -125,7 +125,7 @@ h3 {
 
 .layer-text {
   z-index: 1;
-  font-size: clamp(2.5rem, 9vw, 7rem);
+  font-size: clamp(3.6rem, 12vw, 9.5rem);
   color: rgba(141, 90, 43, 0.16);
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -333,7 +333,7 @@ blockquote {
 
 @media (max-width: 900px) {
   .hero {
-    min-height: unset;
+    min-height: 640px;
     text-align: center;
     gap: 1rem;
   }
@@ -342,7 +342,9 @@ blockquote {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    top: 5%;
+    top: 2%;
+    font-size: clamp(4.4rem, 24vw, 8.8rem);
+    white-space: nowrap;
   }
 
   .hero-image {
@@ -353,7 +355,8 @@ blockquote {
 
   .hero-content {
     justify-self: center;
-    width: min(640px, 100%);
+    width: min(640px, 96%);
+    margin-top: clamp(5.5rem, 24vw, 9rem);
   }
 
   blockquote {
