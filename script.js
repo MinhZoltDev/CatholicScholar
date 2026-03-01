@@ -22,6 +22,32 @@ let currentQuote = 0;
 const quoteText = document.getElementById("quote-text");
 const quoteAuthor = document.getElementById("quote-author");
 
+const resilientImages = document.querySelectorAll("img[data-fallbacks]");
+
+function setupImageFallback(img) {
+  const fallbackList = img.dataset.fallbacks
+    .split(",")
+    .map((item) => item.trim())
+    .filter(Boolean);
+
+  if (!fallbackList.length) {
+    return;
+  }
+
+  img.dataset.fallbackIndex = "0";
+  img.addEventListener("error", () => {
+    const nextIndex = Number(img.dataset.fallbackIndex || 0);
+    if (nextIndex >= fallbackList.length) {
+      return;
+    }
+
+    img.src = fallbackList[nextIndex];
+    img.dataset.fallbackIndex = String(nextIndex + 1);
+  });
+}
+
+resilientImages.forEach(setupImageFallback);
+
 function renderQuote(index) {
   quoteBox.classList.remove("animating");
   void quoteBox.offsetWidth;

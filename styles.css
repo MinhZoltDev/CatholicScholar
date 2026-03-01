@@ -333,30 +333,40 @@ blockquote {
 
 @media (max-width: 900px) {
   .hero {
-    min-height: 640px;
+    min-height: unset;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
     gap: 1rem;
+    padding-top: 4.5rem;
+  }
+
+  .hero-layer {
+    grid-area: auto;
   }
 
   .layer-text {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    top: 2%;
-    font-size: clamp(4.4rem, 24vw, 8.8rem);
+    top: 0.4rem;
+    font-size: clamp(2.4rem, 14vw, 4.8rem);
     white-space: nowrap;
   }
 
   .hero-image {
+    order: 2;
     justify-self: center;
     width: min(340px, 78%);
     margin-left: 0;
   }
 
   .hero-content {
+    order: 3;
     justify-self: center;
     width: min(640px, 96%);
-    margin-top: clamp(5.5rem, 24vw, 9rem);
+    margin-top: clamp(1.6rem, 7vw, 2.8rem);
   }
 
   blockquote {
