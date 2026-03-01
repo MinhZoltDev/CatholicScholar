@@ -20,6 +20,7 @@ body {
   background: var(--bg);
   color: var(--ink);
   line-height: 1.6;
+  overflow-x: hidden;
 }
 
 h1,
@@ -117,6 +118,7 @@ h3 {
   min-height: 530px;
   display: grid;
   align-items: center;
+  overflow: hidden;
 }
 
 .hero-layer {
@@ -351,8 +353,12 @@ blockquote {
     left: 50%;
     transform: translateX(-50%);
     top: 0.4rem;
-    font-size: clamp(2.4rem, 14vw, 4.8rem);
-    white-space: nowrap;
+    max-width: calc(100% - 1rem);
+    font-size: clamp(2rem, 12vw, 4rem);
+    letter-spacing: 0.04em;
+    white-space: normal;
+    line-height: 0.95;
+    overflow-wrap: anywhere;
   }
 
   .hero-image {
